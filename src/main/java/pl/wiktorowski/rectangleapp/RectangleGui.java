@@ -19,6 +19,12 @@ public class RectangleGui extends VerticalLayout {
             textFieldWidth = new TextField("podaj szerokosc");
             button = new Button ("Dodaj ");
 
+
+            add(textFieldHeight);
+            add(textFieldWidth);
+            add(button);
+
+
     }
 
 
