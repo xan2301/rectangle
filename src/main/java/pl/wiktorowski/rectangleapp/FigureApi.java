@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class FigureApi {
 
 @GetMapping("/calculate")
-    public int calculate (@RequestParam){
+    public int calculate (@RequestParam String figure, @RequestParam int siteA, @RequestParam int siteB ){
 
 
 
