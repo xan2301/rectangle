@@ -2,6 +2,7 @@ package pl.wiktorowski.rectangleapp;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -11,9 +12,9 @@ import java.util.List;
 public interface RectangleRepo extends CrudRepository<Rectangle, Long> {
 
 
-    @Query(nativeQuery = true, value = "SELECT * FROM RECTANGLE rect WHERE (2 * rect.height + 2 * rect.width)>20")
-    List<Rectangle> getBigRectangles();
+    @Query(nativeQuery = true, value = "SELECT * FROM RECTANGLE rect WHERE (2 * rect.height + 2 * rect.width) >= :size")
+    List<Rectangle> getBigRectangles(@Param ("size")int size);
 
-    @Query(nativeQuery = true, value = "SELECT * FROM RECTANGLE rect WHERE (2 * rect.height + 2 * rect.width)<20")
-    List<Rectangle> getSmallRectangles();
+    @Query(nativeQuery = true, value = "SELECT * FROM RECTANGLE rect WHERE (2 * rect.height + 2 * rect.width) < :size")
+    List<Rectangle> getSmallRectangles(@Param ("size")int size);
 }
